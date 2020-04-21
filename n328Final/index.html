@@ -1,0 +1,166 @@
+<!doctype html>
+
+<html class="no-js" lang="zxx">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>N328 Final  </title>
+        <script type="text/javascript" src="https://d3js.org/d3.v4.min.js"></script>
+        <style>
+
+                table {
+                font-family: arial, sans-serif;
+                border-collapse: collapse;
+                width: 100%;
+                }
+
+                td, th {
+                border: 1px solid #dddddd;
+                text-align: left;
+                padding: 8px;
+                }
+
+                tr:nth-child(even) {
+                background-color: #dddddd;
+                }
+                text { 
+                    font-family: Arial; 
+                    font-size: 15px;
+                }
+                .axis path, .axis line {
+                    fill: none;
+                    stroke: black;
+                    shape-rendering: crispEdges;
+                }
+                .tick text {
+                    fill: black;
+                    font-size: 11px;
+                }
+        
+                rect {
+                    stroke: white;
+                }
+            </style>
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<!-- CSS here -->
+            <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+            <link rel="stylesheet" href="assets/css/style.css">
+   </head>
+
+   <body>
+    <header>
+        <!-- Header Start -->
+       <div class="header-area header-transparent">
+            <div class="main-header">
+               <div class="header-bottom  header-sticky">
+                    <div class="container-fluid">
+                        <div class="row align-items-center">
+                            <div class="col-xl-8 col-lg-8 col-md-8">
+                                <!-- Main-menu -->
+                                <div class="main-menu f-right d-none d-lg-block">
+                                    <nav> 
+                                    </nav>
+                                </div>
+                            </div>             
+                        </div>
+                    </div>
+               </div>
+            </div>
+       </div>
+        <!-- Header End -->
+    </header>
+    <main>
+        <!-- Slider Area Start-->
+        <div class="slider-area slider-bg ">
+            <div class="slider-active dot-style">
+                <div class="single-slider d-flex align-items-center slider-height ">
+                    <div class="container">
+                        <div class="row align-items-center">
+                            <div class="col-lg-6 col-md-9 ">
+                                <div class="hero__caption">
+                                    <h1 data-animation="fadeInLeft" data-delay=".3s"> Video Game Sales </h1>
+                                    <p data-animation="fadeInLeft" data-delay=".6s"> This dataset was found on Kaggle. It was compiled from a web scrape of VGChartz Video Games Sales and from Metacritic. There are missing observations as Metacritic only covers a subset of the platforms. Also, a game may not have all the observations of the additional variables discussed below. I’ve filtered out the incomplete rows. The total complete rows in this dataset are 6814. This dataset has 16 attributes. </p>
+                                    <p data-animation="fadeInLeft" data-delay=".6s"> Dataset can be found here </p>
+                                    <a href="https://www.kaggle.com/rush4ratio/video-game-sales-with-ratings">https://www.kaggle.com/rush4ratio/video-game-sales-with-ratings</a>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="hero__img d-none d-lg-block f-right">
+                                    <img src="assets/img/data.png" alt="" data-animation="fadeInRight" data-delay="1s">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>    
+            </div>
+        <!--Services Area Start -->
+        <div class="services-area section-padding30 fix">
+            <div class="container">
+                <!-- Section Tittle -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="section-tittle text-center mb-100">
+                            <span>Question 1</span>
+                            <h2> What publisher had the highest total global sales?</h2>
+                        </div>
+                        <svg id="main" width="600" height="600">
+                                <text id='label' x='20' y='20'> Publishers total sales</text>
+                                <g transform="translate(20,40)"></g>
+                        </svg>
+
+                        <script>
+                               // var BAR_WIDTH=10,MAX_BAR_HEIGHT=100, dataset=[];function drawBarChart(){var r=d3.max(dataset);d3.select("#main").select("g").selectAll("rect").data(dataset).enter().append("rect").attr("width",BAR_WIDTH).attr("height",function(t,e){return t/r*MAX_BAR_HEIGHT}).attr("x",function(r,t){return BAR_WIDTH*t}).attr("y",function(t,e){return(1-t/r)*MAX_BAR_HEIGHT})}d3.csv("dataset.csv",function(r){for(var t=0;t<r.length;t++)for(var e=r[t],n=1997;n<=2017;n++){var a=e[n];"--"===a?a=0:"NA"===a?a=0:"(s)"===a?a=0:"W"===a&&(a=0),dataset.push(+a)}drawBarChart()});
+                                        
+                                    </script>
+                    </div>
+                </div>    
+            </div>
+        </div>
+        <div class="services-area section-padding30 fix">
+            <div class="container">
+                <!-- Section Tittle -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="section-tittle text-center mb-100">
+                            <span>Question 2</span>
+                            <h2> How did sales compare across each year?</h2>
+                        </div>
+                        <svg id="main" width="600" height="600">
+                                <text id='label' x='20' y='20'> Publishers total sales</text>
+                                <g transform="translate(20,40)"></g>
+                        </svg>
+                        <script>
+                               // var BAR_WIDTH=10,MAX_BAR_HEIGHT=100, dataset=[];function drawBarChart(){var r=d3.max(dataset);d3.select("#main").select("g").selectAll("rect").data(dataset).enter().append("rect").attr("width",BAR_WIDTH).attr("height",function(t,e){return t/r*MAX_BAR_HEIGHT}).attr("x",function(r,t){return BAR_WIDTH*t}).attr("y",function(t,e){return(1-t/r)*MAX_BAR_HEIGHT})}d3.csv("dataset.csv",function(r){for(var t=0;t<r.length;t++)for(var e=r[t],n=1997;n<=2017;n++){var a=e[n];"--"===a?a=0:"NA"===a?a=0:"(s)"===a?a=0:"W"===a&&(a=0),dataset.push(+a)}drawBarChart()});
+                                        
+                                    </script>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        <div class="services-area section-padding30 fix">
+            <div class="container">
+                <!-- Section Tittle -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="section-tittle text-center mb-100">
+                            <span>Question 3</span>
+                            <h2> What platforms were most popular?</h2>
+                        </div>
+                        <svg id="main" width="600" height="600">
+                                <text id='label' x='20' y='20'> Publishers total sales</text>
+                                <g transform="translate(20,40)"></g>
+                        </svg>
+                        <script>
+                               // var BAR_WIDTH=10,MAX_BAR_HEIGHT=100, dataset=[];function drawBarChart(){var r=d3.max(dataset);d3.select("#main").select("g").selectAll("rect").data(dataset).enter().append("rect").attr("width",BAR_WIDTH).attr("height",function(t,e){return t/r*MAX_BAR_HEIGHT}).attr("x",function(r,t){return BAR_WIDTH*t}).attr("y",function(t,e){return(1-t/r)*MAX_BAR_HEIGHT})}d3.csv("dataset.csv",function(r){for(var t=0;t<r.length;t++)for(var e=r[t],n=1997;n<=2017;n++){var a=e[n];"--"===a?a=0:"NA"===a?a=0:"(s)"===a?a=0:"W"===a&&(a=0),dataset.push(+a)}drawBarChart()});
+                                    </script>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    </body>
+</html>
