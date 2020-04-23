@@ -4,7 +4,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>N328 Final  </title>
+        <title> N328 Final </title>
         <script type="text/javascript" src="https://d3js.org/d3.v4.min.js"></script>
         <style>
 
@@ -82,7 +82,8 @@
                             <div class="col-lg-6 col-md-9 ">
                                 <div class="hero__caption">
                                     <h1 data-animation="fadeInLeft" data-delay=".3s"> Video Game Sales </h1>
-                                    <p data-animation="fadeInLeft" data-delay=".6s"> This dataset was found on Kaggle. It was compiled from a web scrape of VGChartz Video Games Sales and from Metacritic. There are missing observations as Metacritic only covers a subset of the platforms. Also, a game may not have all the observations of the additional variables discussed below. I’ve filtered out the incomplete rows. The total complete rows in this dataset are 6814. This dataset has 16 attributes. </p>
+                                    <p data-animation="fadeInLeft" data-delay=".6s"> Kate Davis, Jamie Flatter, Mellisa Dockter</p>
+                                    <p data-animation="fadeInLeft" data-delay=".6s"> This dataset was found on Kaggle. It was compiled from a web scrape of VGChartz Video Games Sales and from Metacritic. There are missing observations as Metacritic only covers a subset of the platforms. Also, a game may not have all the observations of the additional variables discussed below. I’ve filtered out the incomplete rows. The total complete rows in this dataset are 6814. This dataset has 16 attributes. The dataset has been scraped to only include Xbox One and Playstation 4 Games </p>
                                     <p data-animation="fadeInLeft" data-delay=".6s"> Dataset can be found here </p>
                                     <a href="https://www.kaggle.com/rush4ratio/video-game-sales-with-ratings">https://www.kaggle.com/rush4ratio/video-game-sales-with-ratings</a>
                                 </div>
@@ -106,15 +107,8 @@
                             <span>Question 1</span>
                             <h2> What publisher had the highest total global sales?</h2>
                         </div>
-                        <svg id="main" width="600" height="600">
-                                <text id='label' x='20' y='20'> Publishers total sales</text>
-                                <g transform="translate(20,40)"></g>
+                        <svg id="main" width="200" height="200">
                         </svg>
-
-                        <script>
-                               // var BAR_WIDTH=10,MAX_BAR_HEIGHT=100, dataset=[];function drawBarChart(){var r=d3.max(dataset);d3.select("#main").select("g").selectAll("rect").data(dataset).enter().append("rect").attr("width",BAR_WIDTH).attr("height",function(t,e){return t/r*MAX_BAR_HEIGHT}).attr("x",function(r,t){return BAR_WIDTH*t}).attr("y",function(t,e){return(1-t/r)*MAX_BAR_HEIGHT})}d3.csv("dataset.csv",function(r){for(var t=0;t<r.length;t++)for(var e=r[t],n=1997;n<=2017;n++){var a=e[n];"--"===a?a=0:"NA"===a?a=0:"(s)"===a?a=0:"W"===a&&(a=0),dataset.push(+a)}drawBarChart()});
-                                        
-                                    </script>
                     </div>
                 </div>    
             </div>
@@ -128,17 +122,10 @@
                             <span>Question 2</span>
                             <h2> How did sales compare across each year?</h2>
                         </div>
-                        <svg id="main" width="600" height="600">
-                                <text id='label' x='20' y='20'> Publishers total sales</text>
-                                <g transform="translate(20,40)"></g>
+                        <svg id="main" width="200" height="200">
                         </svg>
-                        <script>
-                               // var BAR_WIDTH=10,MAX_BAR_HEIGHT=100, dataset=[];function drawBarChart(){var r=d3.max(dataset);d3.select("#main").select("g").selectAll("rect").data(dataset).enter().append("rect").attr("width",BAR_WIDTH).attr("height",function(t,e){return t/r*MAX_BAR_HEIGHT}).attr("x",function(r,t){return BAR_WIDTH*t}).attr("y",function(t,e){return(1-t/r)*MAX_BAR_HEIGHT})}d3.csv("dataset.csv",function(r){for(var t=0;t<r.length;t++)for(var e=r[t],n=1997;n<=2017;n++){var a=e[n];"--"===a?a=0:"NA"===a?a=0:"(s)"===a?a=0:"W"===a&&(a=0),dataset.push(+a)}drawBarChart()});
-                                        
-                                    </script>
                     </div>
                 </div>
-                
             </div>
         </div>
         <div class="services-area section-padding30 fix">
@@ -148,15 +135,10 @@
                     <div class="col-lg-12">
                         <div class="section-tittle text-center mb-100">
                             <span>Question 3</span>
-                            <h2> What platforms were most popular?</h2>
+                            <h2> Which popular publishers had the most games on Xbox and PS4? </h2>
+                            <a href ="/viz3.html" style = "color: black" > View Here </a>
+                            <svg width="200" height="200"></svg>
                         </div>
-                        <svg id="main" width="600" height="600">
-                                <text id='label' x='20' y='20'> Publishers total sales</text>
-                                <g transform="translate(20,40)"></g>
-                        </svg>
-                        <script>
-                               // var BAR_WIDTH=10,MAX_BAR_HEIGHT=100, dataset=[];function drawBarChart(){var r=d3.max(dataset);d3.select("#main").select("g").selectAll("rect").data(dataset).enter().append("rect").attr("width",BAR_WIDTH).attr("height",function(t,e){return t/r*MAX_BAR_HEIGHT}).attr("x",function(r,t){return BAR_WIDTH*t}).attr("y",function(t,e){return(1-t/r)*MAX_BAR_HEIGHT})}d3.csv("dataset.csv",function(r){for(var t=0;t<r.length;t++)for(var e=r[t],n=1997;n<=2017;n++){var a=e[n];"--"===a?a=0:"NA"===a?a=0:"(s)"===a?a=0:"W"===a&&(a=0),dataset.push(+a)}drawBarChart()});
-                                    </script>
                     </div>
                 </div>
             </div>
