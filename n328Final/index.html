@@ -40,6 +40,18 @@
                 rect {
                     stroke: white;
                 }
+               
+	.axis {
+	  font: 10px sans-serif;
+	}
+
+	.axis path,
+	.axis line {
+	  fill: none;
+	  stroke: #000;
+	  shape-rendering: crispEdges;
+	}
+
             </style>
 
         <meta name="description" content="">
@@ -100,19 +112,185 @@
                                 <span>Question 1</span>
                                 <h2 style = "color: white"> What publisher had the highest total global sales?</h2>
                                 <a href ="/viz1.html" style = "color: white" > View Here </a>
+                                <div id="viz1" style = "background-color: white"></div>
                             </div>
                             <div class="section-tittle text-center mb-100">
                                 <span>Question 2</span>
                                 <h2 style = "color: white" > How do sales compare between NA and EU?</h2>
-                                <a href ="/viz2.html" style = "color: white" > View Here </a>
+                                <div id="viz2" style = "background-color: white"></div>                              
                             </div>
                             <div class="section-tittle text-center mb-100">
                                 <span>Question 3</span>
                                 <h2 style = "color: white"> Which popular publishers had the most games on Xbox and PS4? </h2>
-                                <a href ="/viz3.html" style = "color: white" > View Here </a>
+                                <div id="viz3" style = "background-color: white"></div>
                             </div>
                     </div>
                 </div>    
             </div>
     </body>
 </html>
+
+<script>
+
+    // set the dimensions and margins of the graph
+    var margin = {top: 10, right: 30, bottom: 30, left: 60},
+        width = 460 - margin.left - margin.right,
+        height = 400 - margin.top - margin.bottom;
+    
+    // append the svg object to the body of the page
+    var svg2 = d3.select("#viz2")
+      .append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+      .append("g")
+        .attr("transform",
+              "translate(" + margin.left + "," + margin.top + ")");
+    
+    //Read the data
+    d3.csv("dataset.csv", function(data) {
+    
+      // Add X axis
+      var x = d3.scaleLinear()
+        .domain([0, 2.5])
+        .range([ 0, width ]);
+      svg2.append("g")
+        .attr("transform", "translate(0," + height + ")")
+        .call(d3.axisBottom(x));
+    svg2.append("text")
+    .attr("text-anchor", "end")
+      .attr("transform", "rotate(-90)")
+      .attr("y", -margin.left + 20)
+      .attr("x", -margin.top - height/2 + 20)
+      .text("NA Sales")
+  // Add X axis label:
+  svg2.append("text")
+      .attr("text-anchor", "end")
+      .attr("x", width/2 + margin.left)
+      .attr("y", height + margin.top + 20)
+      .text("EU Sales");
+    
+      // Add Y axis
+      var y = d3.scaleLinear()
+        .domain([0, 2.5])
+        .range([ height, 0]);
+      svg2.append("g")
+        .call(d3.axisLeft(y));
+    
+      // Add dots
+      svg2.append('g')
+        .selectAll("dot")
+        .data(data)
+        .enter()
+        .append("circle")
+          .attr("cx", function (d) { return x(d.EU_Sales); } )
+          .attr("cy", function (d) { return y(d.NA_Sales); } )
+          .attr("r", 1.5)
+          .style("fill", "#69b3a2")
+        
+    
+    })
+    
+    </script>
+
+<script type = "text/javascript">
+                                
+    d3.csv("dataset.csv", function(d)
+    {
+       return {
+           Publisher : d.Publisher
+       }
+    });
+
+    dataset = {
+        "children": [
+        {"Name": "Bethesda", "Count": 9},
+        {"Name": "Konami", "Count": 11},
+        {"Name": "Nippon", "Count": 8},
+        {"Name": "Square Enix", "Count": 14},
+        {"Name": "Capcom", "Count": 9},
+        {"Name": "Deep Silver", "Count": 10},
+        {"Name": "Namco", "Count": 22},
+        {"Name": "Microsoft", "Count": 17},
+        {"Name": "Sony", "Count": 18},
+        {"Name": "EA", "Count": 53},
+        {"Name": "Take-Two", "Count": 28},
+        {"Name": "Warner Bros", "Count": 27},
+        {"Name": "505", "Count": 10},
+        {"Name": "Ubisoft", "Count": 4},
+        {"Name": "Tecmo", "Count": 11},
+        {"Name": "Activision", "Count": 32},
+        {"Name": "Sega", "Count": 3},
+        {"Name": "Telltale", "Count": 3}
+
+        
+        ]
+    };
+
+    var diameter = 600;
+    var color = d3.scaleOrdinal(d3.schemeCategory20);
+
+    var bubble = d3.pack(dataset)
+        .size([diameter, diameter])
+        .padding(1.5);
+
+    var svg3 = d3.select("#viz3")
+        .append("svg")
+        .attr("width", diameter)
+        .attr("height", diameter)
+        .attr("class", "bubble");
+
+    var nodes = d3.hierarchy(dataset)
+        .sum(function(d) { return d.Count; });
+
+    var node = svg3.selectAll(".node")
+        .data(bubble(nodes).descendants())
+        .enter()
+        .filter(function(d){
+            return  !d.children
+        })
+        .append("g")
+        .attr("class", "node")
+        .attr("transform", function(d) {
+            return "translate(" + d.x + "," + d.y + ")";
+        });
+
+    node.append("title")
+        .text(function(d) {
+            return d.Name + ": " + d.Count;
+        });
+
+    node.append("circle")
+        .attr("r", function(d) {
+            return d.r;
+        })
+        .style("fill", function(d,i) {
+            return color(i);
+        });
+
+    node.append("text")
+        .attr("dy", ".2em")
+        .style("text-anchor", "middle")
+        .text(function(d) {
+            return d.data.Name.substring(0, d.r / 3);
+        })
+        .attr("font-family", "sans-serif")
+        .attr("font-size", function(d){
+            return d.r/5;
+        })
+        .attr("fill", "white");
+
+    node.append("text")
+        .attr("dy", "1.3em")
+        .style("text-anchor", "middle")
+        .text(function(d) {
+            return d.data.Count;
+        })
+        .attr("font-family",  "Gill Sans", "Gill Sans MT")
+        .attr("font-size", function(d){
+            return d.r/5;
+        })
+        .attr("fill", "white");
+
+    d3.select(self.frameElement)
+        .style("height", diameter + "px");             
+</script>
